@@ -209,7 +209,7 @@
 					aux.className = "container col-md-2 menuActive";
 				}
 				else{
-					aux.className = "container col-md-2 menu";
+					aux.className = "container col-md-2 menu_";
 				}
 			});
 			
@@ -281,10 +281,6 @@
 			prefix  = time  + 'year';
 			prefix2 = time2 + 'year';
 		}
-		if(opt == '0'){
-			labels = [prefix];
-		}else	
-			labels = [prefix,prefix2];
 		
 		var orders 	   = parseInt( document.getElementById( prefix  +'_orders' 	  ).innerHTML ),
 			visits 	   = parseInt( document.getElementById( prefix  +'_visits' 	  ).innerHTML ),
@@ -292,7 +288,7 @@
 			products   = parseInt( document.getElementById( prefix  +'_products'  ).innerHTML ),
 			sales 	   = parseInt( document.getElementById( prefix  +'_sales' 	  ).innerHTML );if(!sales)sales=0;
 
-		if(prefix2){
+		if(opt == 1){
 			var	orders2	   = parseInt( document.getElementById( prefix2 +'_orders' 	  ).innerHTML ),
 				visits2	   = parseInt( document.getElementById( prefix2 +'_visits' 	  ).innerHTML ),
 				customers2 = parseInt( document.getElementById( prefix2 +'_customers' ).innerHTML ),
@@ -310,59 +306,23 @@
 			myChart = new Chart(ctx, {
 			type: 'bar',
 				data: {
-					labels: labels,
+					labels: ['Nro ventas','Visitas totales','Clientes','Productos','Monto Ventas'],
 					datasets: [{
-							label: 'Nro ventas realizadas',
-							data: [orders],
+							label: 'Mes Actual',
+							data: [orders,visits,customers,products/*,sales*/],
 							backgroundColor: [
-								'rgba(16, 23, 93, 0.4)'
+								'rgba(16, 23, 93, 0.7)',
+								'rgba(63, 195, 0, 0.7)',
+								'rgba(195,71, 32, 0.7)',
+								'rgba(50, 10,150, 0.7)'/*,
+								'rgba(250, 10,150, 0.7)'*/								
 							],
 							borderColor: [
-								'rgba(16, 23, 93, 0)'
-							],
-							borderWidth: 1
-					},
-					{
-							label: 'Visitas totales',
-							data: [visits],
-							backgroundColor: [
-								'rgba(63, 195, 0, 0.4)'
-							],
-							borderColor: [
-								'rgba(63, 195, 0, 0)'
-							],
-							borderWidth: 1
-					},
-					{
-							label: 'Total clientes',
-							data: [customers],
-							backgroundColor: [
-								'rgba(195,71, 32, 0.4)'
-							],
-							borderColor: [
-								'rgba(195,71, 32, 0)'
-							],
-							borderWidth: 1
-					},
-					{
-							label: 'Total productos',
-							data: [products],
-							backgroundColor: [
-								'rgba(50, 10,150, 0.4)'
-							],
-							borderColor: [
-								'rgba(50, 10,150, 0)'
-							],
-							borderWidth: 1
-					},
-					{  
-							label: 'Monto total de ventas',
-							data: [sales],
-							backgroundColor: [
-								'rgba(250, 10,150, 0.4)'
-							],
-							borderColor: [
-								'rgba(250, 10,150, 0)'
+								'rgba(16, 23, 93, 0)',
+								'rgba(16, 23, 93, 0)',
+								'rgba(16, 23, 93, 0)',
+								'rgba(16, 23, 93, 0)'/*,
+								'rgba(16, 23, 93, 0)'*/
 							],
 							borderWidth: 1
 					}]
@@ -374,6 +334,13 @@
 								beginAtZero:true
 							}
 						}]
+					},
+					legend: {
+      					display: true,
+      					labels: {
+      					  fontColor: '#555'
+      					},
+      					position: 'bottom'
 					}
 				}
 		});
@@ -388,68 +355,42 @@
 			myChart = new Chart(ctx, {
 			type: 'bar',
 				data: {
-					labels: labels,
+					labels: ['Nro ventas','Visitas totales','Clientes','Productos','Monto Ventas'],
 					datasets: [{
-							label: 'Nro ventas realizadas',
-							data: [orders,orders2],
+							label: 'Mes Actual',
+							data: [orders,visits,customers,products/*,sales*/],
 							backgroundColor: [
-								'rgba(16, 23, 93, 0.4)',
-								'rgba(16, 23, 93, 0.4)'
-							],borderColor: [
+								'rgba(16, 23, 93, 0.7)',
+								'rgba(63, 195, 0, 0.7)',
+								'rgba(195,71, 32, 0.7)',
+								'rgba(50, 10,150, 0.7)'/*,
+								'rgba(250, 10,150, 0.7)'*/								
+							],
+							borderColor: [
 								'rgba(16, 23, 93, 0)',
-								'rgba(16, 23, 93, 0)'
+								'rgba(16, 23, 93, 0)',
+								'rgba(16, 23, 93, 0)',
+								'rgba(16, 23, 93, 0)'/*,
+								'rgba(16, 23, 93, 0)'*/
 							],
 							borderWidth: 1
 					},
 					{
-							label: 'Visitas totales',
-							data: [visits,visits2],
+							label: 'Mes Anterior',
+							data: [orders2,visits2,customers2,products2/*,sales2*/],
 							backgroundColor: [
-								'rgba(63, 195, 0, 0.4)',
-								'rgba(63, 195, 0, 0.4)'
+								'rgba(16, 23, 93, 0.7)',
+								'rgba(63, 195, 0, 0.7)',
+								'rgba(195,71, 32, 0.7)',
+								'rgba(50, 10,150, 0.7)'/*,
+								'rgba(250, 10,150, 0.7)'*/								
 							],
 							borderColor: [
-								'rgba(63, 195, 0, 0)',
-								'rgba(63, 195, 0, 0)'
-							],
-							borderWidth: 1
-					},
-					{
-							label: 'Total clientes',
-							data: [customers,customers2],
-							backgroundColor: [
-								'rgba(195,71, 32, 0.4)',
-								'rgba(195,71, 32, 0.4)'
-							],
-							borderColor: [
-								'rgba(195,71, 32, 0)',
-								'rgba(195,71, 32, 0)'
-							],
-							borderWidth: 1
-					},
-					{
-							label: 'Total productos',
-							data: [products,products2],
-							backgroundColor: [
-								'rgba(50, 10,150, 0.4)',
-								'rgba(50, 10,150, 0.4)'
-							],
-							borderColor: [
-								'rgba(50, 10,150, 0)',
-								'rgba(50, 10,150, 0)'
-							],
-							borderWidth: 1
-					},
-					{  
-							label: 'Monto total de ventas',
-							data: [sales,sales2],
-							backgroundColor: [
-								'rgba(250, 10,150, 0.4)',
-								'rgba(250, 10,150, 0.4)'
-							],
-							borderColor: [
-								'rgba(250, 10,150, 0)',
-								'rgba(250, 10,150, 0)'
+								'rgba(16, 23, 93, 0)',
+								'rgba(16, 23, 93, 0)',
+								'rgba(16, 23, 93, 0)',
+								'rgba(16, 23, 93, 0)'/*,
+								'rgba(16, 23, 93, 0)'*/
 							],
 							borderWidth: 1
 					}]
@@ -461,7 +402,15 @@
 								beginAtZero:true
 							}
 						}]
+					},
+					legend: {
+						display: true,
+						labels: {
+							fontColor: '#555'
+						},
+						position: 'bottom'
 					}
+			
 				}
 		});
 		value = document.getElementById("value1"); value.innerHTML = orders;
@@ -481,20 +430,17 @@
 	}
 </script>
 
-
-
-
 <style>
-	.menu{
+	.menu_{
 		color:#afafaf;
 		font-weight: bold !important;
 		padding-left: 72.5px !important;
 		border-color:rgba(0,0,0,0.5) !important;
 		height: 25px;
-		transition: 0.5s!important;
+		transition: 1.5s!important;
 		cursor: pointer;
 	}
-	.menu:hover{
+	.menu_:hover{
 		color: rgb(37, 137, 236) !important;
 	}
 	.menuActive{
@@ -568,14 +514,14 @@
 
 <div class="panel" style="padding:0px !important;">
 	<div class="row panel-body" style="background-color: white; padding:0px !important; margin-right:0px !important; margin-left:0px !important;">
-		<div id="tg1" class="container col-md-2 menu">
+		<div id="tg1" class="container col-md-2 menu_">
 			<h3 style="border-bottom-color: rgba(0,0,0,0);" class="tittle" onclick="change('tg1','Total')">Total</h3>
 		</div>
 
-		<div id="tg2"  class="container col-md-2 menu">
+		<div id="tg2"  class="container col-md-2 menu_">
 			<h3 style="border-bottom-color: rgba(0,0,0,0);" class="tittle" onclick="change('tg2','Mes')">Mes</h3>
 		</div>
-		<div id="tg3" class="container col-md-2 menu">
+		<div id="tg3" class="container col-md-2 menu_">
 			<h3 style="border-bottom-color: rgba(0,0,0,0);" class="tittle" onclick="change('tg3','Año')">Año</h3>
 		</div>
 	</div>
@@ -594,7 +540,7 @@
 
 		
 		<div class="row">
-			<div id="chart1" class="col-md-6" style="display:none;">
+			<div id="chart1" class="col-md-6 chart_cont" style="display:none;">
 				<i class="fa fa-bar-chart" style="font-size: 15px !important;" aria-hidden="true"><label style="font-size:12px !important;">Data Estadistica Actual</label></i>
 				<div style="width:100% !important;">
 					<div class="panel-body" style="padding: 0px !important;">
@@ -626,13 +572,13 @@
 					</div>	
 				</div>
 			</div>
-			<div id="chart2" class="col-md-6" style="display:none;">
+			<div id="chart2" class="col-md-6 chart_cont" style="display:none;">
 				<i class="fa fa-bar-chart" style="font-size: 15px !important;" aria-hidden="true"><label style="font-size: 12px !important;">Data Estadistica Anterior</label></i>
 				<div style="width:100% !important;">
 					<div class="panel-body" style="padding: 0px !important;">
 					
 						<div class="container col-md-3 tabla">
-							<h5 class="tab_head">Número de ventas realizadas</h5>
+							<h5 class="tab_head">Nro Ventas realizadas</h5>
 							<label id="_value1">0</label>
 						</div>
 
@@ -658,9 +604,7 @@
 					</div>	
 				</div>
 			</div>
-			<div class="col-md-6 col-md-offset-3"><canvas id="myChart"></canvas></div>
-		</div>
-
+			<div class="col-md-8 col-md-offset-2" style="margin-top:35px;"><canvas id="myChart"></canvas></div>
 
 		</div>
 	</div>
