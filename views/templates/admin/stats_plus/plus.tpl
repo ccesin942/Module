@@ -360,11 +360,11 @@
 							label: 'Mes Actual',
 							data: [orders,visits,customers,products/*,sales*/],
 							backgroundColor: [
-								'rgba(16, 23, 93, 0.7)',
-								'rgba(63, 195, 0, 0.7)',
-								'rgba(195,71, 32, 0.7)',
-								'rgba(50, 10,150, 0.7)'/*,
-								'rgba(250, 10,150, 0.7)'*/								
+								'rgba(16, 23, 93, 0.5)',
+								'rgba(63, 195, 0, 0.5)',
+								'rgba(195,71, 32, 0.5)',
+								'rgba(50, 10,150, 0.5)'/*,
+								'rgba(250, 10,150, 0.5)'*/								
 							],
 							borderColor: [
 								'rgba(16, 23, 93, 0)',
@@ -379,11 +379,11 @@
 							label: 'Mes Anterior',
 							data: [orders2,visits2,customers2,products2/*,sales2*/],
 							backgroundColor: [
-								'rgba(16, 23, 93, 0.7)',
-								'rgba(63, 195, 0, 0.7)',
-								'rgba(195,71, 32, 0.7)',
-								'rgba(50, 10,150, 0.7)'/*,
-								'rgba(250, 10,150, 0.7)'*/								
+								'rgba(16, 23, 93, 0.75)',
+								'rgba(63, 195, 0, 0.75)',
+								'rgba(195,71, 32, 0.75)',
+								'rgba(50, 10,150, 0.75)'/*,
+								'rgba(250, 10,150, 0.75)'*/								
 							],
 							borderColor: [
 								'rgba(16, 23, 93, 0)',
